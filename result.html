@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Material Design for Bootstrap fonts and icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+
+    <!-- Material Design for Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Results</title>
+  </head>
+  <body onload="fetch();">
+    <nav class="navbar navbar-light bg-white">
+      <a class="navbar-brand" href="#">
+        <img src="img/logo.png" width="80" height="40" alt="">
+      </a>
+      <ul class="navbar-nav">
+      <li>
+        Profile <span class="sr-only">(current)</span>
+      </li>
+      </ul>
+    </nav>
+    <div class="text-center ">
+      <span class="badge title badge-pill badge-primary"><strong>Result</strong></span>
+    </div>
+    <div class="table-responsive-xs m-4">
+      <table class="table table-striped table-light">
+        <thead >
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Score</th>
+          </tr>
+        </thead>
+        <tbody id="result">
+        </tbody>  
+      </table>
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+    <script src="js/bootstrap-material-design.js"></script>
+    <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+    <script type="text/javascript">
+      function fetch()  
+      {  
+           $.ajax({  
+                url:"http://www.creatnlrn.com/api/display.php",  
+                method:"POST",  
+                success:function(data){  
+                     $('#result').html(data);  
+                }  
+           });  
+      }  
+    </script>
+  </body>
+</html>
