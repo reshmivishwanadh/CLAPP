@@ -12,7 +12,8 @@ function Script1()
 {
 var player = GetPlayer();
 var test = player.GetVar("storylineVar");
-var name= localStorage.name;
+//var name= localStorage.name;
+  var name= "test"
   var checkStatus = function() {
     if (navigator.onLine) {
           $.ajax({
@@ -24,7 +25,7 @@ var name= localStorage.name;
         window.location.href = "../index.html";
       },
        error: function () {
-        alert(response);
+        alert("error");
        }
       });
       sessionStorage.clear();    
