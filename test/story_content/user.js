@@ -24,7 +24,7 @@ var name= localStorage.name;
         window.location.href = "../index.html";
       },
        error: function () {
-        alert("error");
+        alert(response);
        }
       });
       sessionStorage.clear();    
