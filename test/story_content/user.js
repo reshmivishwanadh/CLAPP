@@ -25,7 +25,7 @@ var name= "hii";
         window.location.href = "../index.html";
       },
        error: function () {
-        alert(response);
+        alert("error");
        }
       });
       sessionStorage.clear();    
