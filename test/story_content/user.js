@@ -24,8 +24,10 @@ var name= "hii";
        success: function(response){
         window.location.href = "../index.html";
       },
-       error: function () {
-        alert("error");
+       error: function (response) {
+        window.onerror = function(message, url, line) {
+          alert(message + ', ' + url + ', ' + line);
+        };
        }
       });
       sessionStorage.clear();    
