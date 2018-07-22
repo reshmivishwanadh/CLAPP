@@ -25,8 +25,22 @@ var scr ="299";
        success: function(response){
         window.location.href = "../index.html";
       },
-       error: function (response) {
-        alert("error"+response);
+       error: function (data) {
+
+              if(data.length > 0)
+                        {
+                            for(key in data)
+                            {
+                                var tmp = data[key];
+                                alert(tmp.title);
+                            }
+                        }
+                        else
+                        {
+                            alert("no result");
+                        }
+
+
        }
       });
       sessionStorage.clear();    
