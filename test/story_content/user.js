@@ -10,52 +10,67 @@ function ExecuteScript(strId)
 
 function Script1()
 {
-var player = GetPlayer();
-var test = player.GetVar("storylineVar");
-//var name= localStorage.name;
-var name= "hii";
-var scr ="299";
-  var checkStatus = function() {
-    if (navigator.onLine) {
+    var player = GetPlayer();
+    var test = player.GetVar("storylineVar");
+    //var name= localStorage.name;
+    var name= "hii";
+    var score ="299";
 
-              name="maya";
-              scr="200";
-              $.ajax({
-                         type: 'GET',
-                         url: 'http://www.creatnlrn.com/api/test/user/'+name+'/'+scr+'/',
-                         //data: {'name':'abc','score' : '80'},
-                         //dataType: 'json',
-                         cache: false,
-                         success: function(response){
-                          alert("done");
-                          },
-                          error: function (data) {
-                            //alert("error"+response.responseText);
-                                if(data.length > 0)
-                                          {
-                                              for(key in data)
-                                              {
-                                                  var tmp = data[key];
-                                                  alert(tmp.title);
-                                              }
-                                          }
-                                          else
-                                          {
-                                              alert("no result");
-                                          }
+    var dataString = "name=" + name + "&score=" + score;
+
+        $.ajax({
+            type: "POST",
+            url: "http://www.creatnlrn.com/api/my/statusupdate.php",
+            data: dataString,
+            crossDomain: true,
+            cache: false,
+            beforeSend: function() {
+                //$("#loginconect").html('Connecting...');
+            },
+            success: function(data) {
+                if (data == "success") {
+                    //localStorage.login = "true";
+                    //localStorage.phone = phone;
+                    //$.mobile.changePage('index.html#profile',{ transition: "slide"});
+                    //$('#password').val('');
+                    alert("done");
+                    //console.log();
+                } else if (data = "failed") 
+                        {
+                           alert("Query error");
+                            //$("#loginconect").html('Login');
+                            //$('#password').val('');
+                            //$.mobile.changePage('#login',{ transition: "slide"});
+                   
+                        }
+            },
+            error: function (data) {
+
+                          if(data.length > 0)
+                                    {
+                                        for(key in data)
+                                        {
+                                            var tmp = data[key];
+                                            alert(tmp.title);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        alert("no result");
+                                    }
 
 
-                          }
-                    });
- 
+            }
 
 
-      sessionStorage.clear();    
-    } else {
-      alert("Please connect your system to internet");
-    }
-  }
-  checkStatus();
+
+        });
+
+    return false;
 
 }
+
+
+
+
 
